@@ -1,47 +1,114 @@
-## Exercício 1
-A =[[3,20,10,10],[4,25,15,8],[7,40,20,10],[20,50,22,15]];
-display('A Matriz A do sistema é:',A);
-b = [504,1970,970,601]';
-display('A Matriz B do sistema é:',b);
+clear
+clc ## De verdade não sei se era necesário  mas rodei tantas vzes esse treco que preferi deixar ele aqui
 
+
+  display('Exercício 1')
+
+display('a')
+A =[[3,20,10,10];[4,25,15,8];[7,40,20,10];[20,50,22,15]];
+display('A Matriz A do sistema é:'),display(A)
+b = [504,1970,970,601]';
+display('A Matriz B do sistema é:'),display(b);
+display('pressione qualquer tecla para continuar')
+pause
+
+
+display('b')
 [L,U] = LU(A);
-display(L,U);
+display(L),display(U);
 X = DecLU(A,b);
-display('O Resultado do sistema é :', X)
+display('O Resultado do sistema é :'),display(X)
+
+display('pressione qualquer tecla para continuar')
+pause
+display('c')
 function [det] = rank(A)
+
+
     n = rows(A);
     det = 1;
-    for i 1:n:
-        det = det*A[i,i];
+    for i = 1:n
+        det = det.*A(i,i);
     endfor
 endfunction
-display('O determinante da matriz A é: ',rank(L)*rank(U)) 
+display('O determinante da matriz A é:'),display(rank(L)*rank(U))
+display('pressione qualquer tecla para continuar')
 pause
-## Exercício 2
-## a)
-Pt = [,[-50,0.125],[-20,0.128],[10,0.134],[70,0.144],[100,0.150],[120,0.155]]; #[T,C]
+
+
+  display('Exercício 2')
+Pt = [[-50,0.125];[-20,0.128];[10,0.134];[70,0.144];[100,0.150];[120,0.155]]; #[T,C]
+
+display('a')
 [c,e,e2]=Rl(Pt);
-display(esq2)
-###Escrever display com a função escrita certinho
-## b)
+display('A função f(x) = ax+b que aproxima os pontos é tal que')
+a = c(1)
+b = c(2)
+x = -65:0.5:135;
+r = @(x) a.*x + b;
+plot(Pt(:,1),Pt(:,2),'o',x,r(x));
+title ("Plotagem linear ");
+grid on;
+display('pressione qualquer tecla para continuar')
+pause
+
+
+
+display('b')
 [csqr,esq,esq2] = Rsqr(Pt);
-display(esq2)
-## c)
+display('A função f(x) = ax^2+bx + c que aproxima os pontos é tal que')
+a = csqr(3)
+b = csqr(2)
+c = csqr(1)
+r = @(x) a.*x.^2 + b.*x + c;
+x = -65:0.5:135;
+plot(Pt(:,1),Pt(:,2),'o',x,r(x));
+title ("Plotagem quadratica ");
+grid on;
+display('pressione qualquer tecla para continuar')
+pause
 
-## Exercício 3
 
-Vendas = [[1,4.0],[2,4.4],[3,5.2],[4,6.4],[5,8.0]];
+display('c')
+display('O erro quadrático médio da função linear é '),display(mean(e2))
+display('O erro quadrático médio da função quadrática é'),display(mean(esq2))
+
+
+  display('Exercício 3')
+Vendas = [[1,4.0];[2,4.4];[3,5.2];[4,6.4];[5,8.0]];
 [cp2, lixo1,lixo2]  = Rsqr(Vendas);
-function [y] = quad(x,c):
-    y = c[1] + x.*c[2] + c[3].*x^2;
-endfunction
+display('A função f(x) = ax^2+bx + c que aproxima os pontos é tal que')
+a = cp2(3)
+b = cp2(2)
+c = cp2(1)
+f = @(x) a.*x.^2 + b.*x + c;
+x = -0:0.05:13;
+plot(Vendas(:,1),Vendas(:,2),'o',x,f(x));
+title ("Projeção de vendas ");
+grid on;
 
-display(quad(10,cp2));
+display(f(12));
+display('pressione qualquer tecla para continuar')
+pause
 
-## Exercício 4
 
-pathfinder = [[4.5,15],[-5.9,20],[-16.1,25],[-27.6,30],[-39.8,35],[-50.2,40],[-62.9,45]]
+  display('Exercício 4')
+pathfinder = [[4.5,15];[-5.9,20];[-16.1,25];[-27.6,30];[-39.8,35];[-50.2,40];[-62.9,45]]
 [cpf,erro1,erroquadratico] = Rl(pathfinder)
+display('A função f(x) = ax+b que aproxima os pontos é tal que')
+a = cpf(1)
+b = cpf(2)
+x = -65:0.1:5;
+f = @(x) a.*x + b;
+plot(pathfinder(:,1),pathfinder(:,2),'o',x,f(x));
+title ("Plotagem linear do Pathfinder ");
+grid on;
+
+display('pressione qualquer tecla para continuar')
+pause
+
+
+
   display('Exercício 5')
 X = [[1,7];[3,3];[6,1]];
 Xi = X;
