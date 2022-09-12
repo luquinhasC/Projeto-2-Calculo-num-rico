@@ -42,9 +42,41 @@ display(quad(10,cp2));
 
 pathfinder = [[4.5,15],[-5.9,20],[-16.1,25],[-27.6,30],[-39.8,35],[-50.2,40],[-62.9,45]]
 [cpf,erro1,erroquadratico] = Rl(pathfinder)
+  display('Exercício 5')
+X = [[1,7];[3,3];[6,1]];
+Xi = X;
+for i = 1:3
+  Xi(i,1) = 1./Xi(i,1);
+endfor
+[c,e,e2] = Rl(Xi)
+display('A função f(x) = a+b/x que aproxima os pontos é tal que')
+a = c(2)
+b = c(1)
+x = 0:0.1:7;
+f = @(x) a + b./x;
+plot(X(:,1),X(:,2),'o',x,f(x));
+title ("Plotagem de curva ");
+grid on;
+display('pressione qualquer tecla para continuar')
+pause
 
 
-## Exercício 5
 
-## Exercício 6
+
+  display(' Exercício 6')
+  display('a')
+a = 1;
+b = 2;
+f = @(x) e.^x ./x;
+n = 5;
+I_1 = int_trap(f,a,b,:,n,:);
+display('O valor de I(1) calculado pela regra de trapézios é:'),display(I_1)
+display('pressione qualquer tecla para continuar')
+pause
+
+
+display('b')
+b_n = 1 + 2/5; ## a + 2*h
+I_1s = int_simp(f,a,b_n,:,2,:) + int_tercsimp(f,b_n,b,:,3,:) ;
+display('O valor de I(1) calculado pela regra de simpson repetida é:'),display(I_1s)
 
