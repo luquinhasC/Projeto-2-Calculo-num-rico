@@ -11,7 +11,6 @@ function [c,e,e2] = Rsqr (X) ##Função que computa os parametros c e o erro da 
   for i = 1:n
     R(i) = c(1) + c(2)*X(i,1) + c(3)*X(i,1)^2; #computando os valores na função
   endfor
-  plot(X(:,1),X(:,2),'o',X(:,1),R) #plot da função
   #calculo do erro
   e = [];
   e2 = [];
@@ -19,8 +18,7 @@ function [c,e,e2] = Rsqr (X) ##Função que computa os parametros c e o erro da 
     e(i) = abs(X(i,2) - R(i));
     e2(i) = e(i)^2;
   endfor
-  display(e)
-  display(e2)
+
 
 
 

@@ -10,15 +10,12 @@ function [c,e,e2] = Rl (X) #Função que computa os parametros c e o erro da fun
   A = Y'*Y;
   b = Y'*X(:,2); #X(:,2) é o y de cada ponto em ordem
   c = A\b; #Resolução do sistema Ac = b
-  plot(X(:,1),X(:,2),'o',X(:,1),c(1)*X(:,1) + c(2)) #Plotagem dos pontos tendo resolvido o sistema
   e = []; # Matriz do erro
   e2 = []; #Matriz do erro quadrado
   for i = 1:n #Variando em cada ponto de X
     e(i) = abs(X(i,2) - c(1)*X(i,1) + c(2)); #Calculo do erro no i-esimo ponto
     e2(i) = e(i)^2; #Erro quadrado nesse mesmo ponto
   endfor
-  display(e)
-  display(e2)
 
 
 
