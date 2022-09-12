@@ -20,7 +20,7 @@ function [Vlr_da_Integral] = int_tercsimp(f,inicio_do_inter,fim_do_inter,erro = 
      error('Não é possível calcular a integral pela regra de simpson com uma quantidade indivisivel por 3 de subintervalos')
    endif
    n = n_subinter;
-   h = (b-a)/n;
+     h = (b-a)/n;
  endif
  S = 0; #Parte da soma das funções na formula
  for (i = 1:n-1) #calculando a soma, mod(i,2) é o resto mod 2

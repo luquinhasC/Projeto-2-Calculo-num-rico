@@ -20,5 +20,5 @@ function [X] = DecLU(A,B) #Resolução do sistema AX = B pela decomposição LU
       endif
     endfor #fim do novo loop das linhas
   endfor # fim do novo loop das colunas
-   X = Y # resposta
+   X = Y; # resposta
 endfunction

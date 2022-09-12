@@ -134,7 +134,7 @@ pause
   display('a')
 a = 1;
 b = 2;
-f = @(x) e.^x ./x;
+f = inline("(e.^x)./x");
 n = 5;
 I_1 = int_trap(f,a,b,:,n,:);
 display('O valor de I(1) calculado pela regra de trapézios é:'),display(I_1)

@@ -13,7 +13,7 @@ function [c,e,e2] = Rl (X) #Função que computa os parametros c e o erro da fun
   e = []; # Matriz do erro
   e2 = []; #Matriz do erro quadrado
   for i = 1:n #Variando em cada ponto de X
-    e(i) = abs(X(i,2) - c(1)*X(i,1) + c(2)); #Calculo do erro no i-esimo ponto
+    e(i) = abs(X(i,2) - c(1)*X(i,1) - c(2)); #Calculo do erro no i-esimo ponto
     e2(i) = e(i)^2; #Erro quadrado nesse mesmo ponto
   endfor
 
